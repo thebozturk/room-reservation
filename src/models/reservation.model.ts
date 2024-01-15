@@ -1,9 +1,19 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Room} from './room.model';
 import {User} from './user.model';
+import {v4 as uuidv4} from 'uuid';
 
 @model({settings: {strict: false}})
 export class Reservation extends Entity {
+  @property({
+    type: 'string',
+    id: true,
+    generated: false,
+    default: () => uuidv4(),
+    useDefaultIdType: false,
+  })
+  id: number;
+
   @property({
     type: 'date',
     required: true,
@@ -17,6 +27,12 @@ export class Reservation extends Entity {
   endDate: string;
 
   @property({
+    type: 'number',
+    required: true,
+  })
+  guests: number;
+
+  @property({
     type: 'string',
     required: true,
   })
@@ -26,7 +42,7 @@ export class Reservation extends Entity {
     type: 'string',
     required: true,
   })
-  price: string;
+  price: number;
 
   @belongsTo(() => Room)
   roomId: string;

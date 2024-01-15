@@ -8,8 +8,7 @@ const config = {
   host: 'localhost',
   port: 5432,
   user: '',
-  password: '',
-  database: ''
+  database: 'reservation-system'
 };
 
 // Observe application's life cycle to disconnect the datasource when
