@@ -1,9 +1,12 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Reservation} from './reservation.model';
 
 @model()
 export class Room extends Entity {
   @property({
     type: 'string',
+    id: true,
+    generated: false,
     required: true,
   })
   roomNumber: string;
@@ -38,6 +41,8 @@ export class Room extends Entity {
   })
   weekendPrice: number;
 
+  @hasMany(() => Reservation)
+  reservations: Reservation[];
 
   constructor(data?: Partial<Room>) {
     super(data);

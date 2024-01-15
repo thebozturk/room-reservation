@@ -1,21 +1,9 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Room} from './room.model';
+import {User} from './user.model';
 
 @model({settings: {strict: false}})
 export class Reservation extends Entity {
-  @property({
-    type: 'string',
-    id: true,
-    generated: false,
-    required: true,
-  })
-  userId: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  roomId: string;
-
   @property({
     type: 'date',
     required: true,
@@ -40,6 +28,11 @@ export class Reservation extends Entity {
   })
   price: string;
 
+  @belongsTo(() => Room)
+  roomId: string;
+
+  @belongsTo(() => User)
+  userId: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data
