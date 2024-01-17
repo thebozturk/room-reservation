@@ -9,6 +9,7 @@ import {
   Send,
   SequenceHandler,
 } from '@loopback/rest';
+import {AuthenticateFn, AuthenticationBindings} from '@loopback/authentication';
 
 const DEFAULT_ERROR_MESSAGE = "There's an error on the server. Please try again later.";
 
@@ -19,6 +20,8 @@ export class MySequence implements SequenceHandler {
     @inject(RestBindings.SequenceActions.PARSE_PARAMS) protected parseParams: ParseParams,
     @inject(RestBindings.SequenceActions.REJECT) protected reject: Reject,
     @inject(RestBindings.SequenceActions.SEND) public send: Send,
+    @inject(AuthenticationBindings.AUTH_ACTION)
+    protected authenticateRequest: AuthenticateFn,
   ) {}
 
   async handle(context: RequestContext) {
@@ -27,6 +30,7 @@ export class MySequence implements SequenceHandler {
       const route = this.findRoute(request);
       const args = await this.parseParams(request, route);
       const result = await this.invoke(route, args);
+      await this.authenticateRequest(request)
 
       this.send(response, result);
     } catch (error) {

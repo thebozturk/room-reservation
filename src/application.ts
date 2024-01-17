@@ -1,3 +1,10 @@
+import {AuthenticationComponent} from '@loopback/authentication';
+import {
+  JWTAuthenticationComponent,
+  JWTService,
+  MyUserService,
+  TokenServiceBindings, UserCredentialsRepository, UserRepository, UserServiceBindings,
+} from '@loopback/authentication-jwt';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
 import {
@@ -20,7 +27,13 @@ export class RoomReservationApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
     super(options);
 
-    this.dataSource(PgDataSource, 'datasources.pg')
+    this.component(AuthenticationComponent);
+    this.component(JWTAuthenticationComponent);
+    this.dataSource(PgDataSource, UserServiceBindings.DATASOURCE_NAME);
+    this.bind(UserServiceBindings.USER_SERVICE).toClass(MyUserService);
+    this.bind(UserServiceBindings.USER_REPOSITORY).toClass(UserRepository);
+    this.bind(UserServiceBindings.USER_CREDENTIALS_REPOSITORY).toClass(UserCredentialsRepository)
+
 
     // Set up the custom sequence
     this.sequence(MySequence);

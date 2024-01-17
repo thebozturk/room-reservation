@@ -3,7 +3,7 @@ import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/re
 import {PgDataSource} from '../datasources';
 import {Reservation, ReservationRelations, Room, User} from '../models';
 import {RoomRepository} from './room.repository';
-import {UserRepository} from './user.repository';
+import {LocalUserRepository} from './local-user.repository';
 
 export class ReservationRepository extends DefaultCrudRepository<
   Reservation,
@@ -16,7 +16,7 @@ export class ReservationRepository extends DefaultCrudRepository<
   public readonly user: BelongsToAccessor<User, typeof Reservation.prototype.userId>;
 
   constructor(
-    @inject('datasources.pg') dataSource: PgDataSource, @repository.getter('RoomRepository') protected roomRepositoryGetter: Getter<RoomRepository>, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<UserRepository>,
+    @inject('datasources.pg') dataSource: PgDataSource, @repository.getter('RoomRepository') protected roomRepositoryGetter: Getter<RoomRepository>, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<LocalUserRepository>,
   ) {
     super(Reservation, dataSource);
     this.user = this.createBelongsToAccessorFor('user', userRepositoryGetter,);

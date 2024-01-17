@@ -6,6 +6,7 @@ import {PriceCalculationService} from '../services/price-calculation.service';
 import {RoomAvailabilityService} from '../services/is-room-available.service';
 import {RoomAvailabilityRepository} from '../repositories';
 import {inject} from '@loopback/core';
+import {authenticate} from '@loopback/authentication';
 
 export class ReservationController {
   constructor(
@@ -101,6 +102,7 @@ export class ReservationController {
     return 'Reservation cancelled successfully'
   }
 
+  @authenticate('jwt')
   @patch('/reservations/{id}/confirm')
   @response(204, {
     description: 'Reservation confirmation success',

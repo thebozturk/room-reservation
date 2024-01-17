@@ -4,7 +4,7 @@ import {PgDataSource} from '../datasources';
 import {User, UserRelations, Reservation} from '../models';
 import {ReservationRepository} from './reservation.repository';
 
-export class UserRepository extends DefaultCrudRepository<
+export class LocalUserRepository extends DefaultCrudRepository<
   User,
   typeof User.prototype.id,
   UserRelations

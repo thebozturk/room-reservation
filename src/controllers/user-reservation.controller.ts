@@ -19,11 +19,11 @@ import {
   User,
   Reservation,
 } from '../models';
-import {UserRepository} from '../repositories';
+import {LocalUserRepository} from '../repositories';
 
 export class UserReservationController {
   constructor(
-    @repository(UserRepository) protected userRepository: UserRepository,
+    @repository(LocalUserRepository) protected userRepository: LocalUserRepository,
   ) { }
 
   @get('/users/{id}/reservations', {

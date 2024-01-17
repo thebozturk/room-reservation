@@ -1,6 +1,6 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
 import {Reservation} from './reservation.model';
-import {v4 as uuidv4} from 'uuid';
+import {UserCredentials} from './user-credentials.model';
 
 @model({settings: {strict: false}})
 export class User extends Entity {
@@ -8,8 +8,7 @@ export class User extends Entity {
     type: 'string',
     id: true,
     generated: false,
-    default: () => uuidv4(),
-    useDefaultIdType: false,
+    defaultFn: 'uuidv4',
   })
   id: string;
 
@@ -27,9 +26,21 @@ export class User extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
-  password: string;
+  realm?: string;
+
+  @property({
+    type: 'boolean',
+  })
+  emailVerified?: boolean;
+
+  @property({
+    type: 'string',
+  })
+  verificationToken?: string;
+
+  @hasOne(() => UserCredentials)
+  userCredentials: UserCredentials;
 
   @hasMany(() => Reservation)
   reservations: Reservation[];
