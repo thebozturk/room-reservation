@@ -12,7 +12,7 @@ export class Reservation extends Entity {
     default: () => uuidv4(),
     useDefaultIdType: false,
   })
-  id: number;
+  id: string;
 
   @property({
     type: 'date',
@@ -33,16 +33,16 @@ export class Reservation extends Entity {
   guests: number;
 
   @property({
-    type: 'string',
-    required: true,
-  })
-  status: string;
-
-  @property({
-    type: 'string',
-    required: true,
+    type: 'number',
+    default: 0,
   })
   price: number;
+
+  @property({
+    type: 'boolean',
+    default: false,
+  })
+  isConfirmed: boolean;
 
   @belongsTo(() => Room)
   roomId: string;

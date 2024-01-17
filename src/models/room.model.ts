@@ -1,5 +1,6 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Reservation} from './reservation.model';
+import {RoomStatus} from '../constants/room-status.constant';
 
 @model()
 export class Room extends Entity {
@@ -22,12 +23,6 @@ export class Room extends Entity {
     required: true,
   })
   capacity: number;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  status: string;
 
   @property({
     type: 'number',

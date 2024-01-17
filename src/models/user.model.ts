@@ -11,7 +11,7 @@ export class User extends Entity {
     default: () => uuidv4(),
     useDefaultIdType: false,
   })
-  id: number;
+  id: string;
 
   @property({
     type: 'string',

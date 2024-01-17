@@ -5,7 +5,7 @@ import {
   post,
   getModelSchemaRef,
   requestBody,
-  response,
+  response, get, param,
 } from '@loopback/rest';
 import {User} from '../models';
 import {UserRepository} from '../repositories';
@@ -35,5 +35,16 @@ export class UserController {
     user: User,
   ): Promise<User> {
     return this.userRepository.create(user);
+  }
+
+  @get('/users/{id}')
+  @response(200, {
+    description: 'User model instance',
+    content: {'application/json': {schema: getModelSchemaRef(User)}},
+  })
+  async find(
+    @param.path.string('id') id: string,
+  ): Promise<User> {
+    return this.userRepository.findById(id);
   }
 }
