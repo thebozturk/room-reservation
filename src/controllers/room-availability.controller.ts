@@ -41,7 +41,8 @@ export class RoomAvailabilityController {
   @response(204, {
     description: 'RoomAvailability DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<string> {
     await this.roomAvailabilityRepository.deleteById(id);
+    return 'Room availability deleted successfully'
   }
 }
