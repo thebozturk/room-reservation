@@ -29,16 +29,10 @@ This project is a RESTful API that allows users to manage room reservations. Use
 
 ## Technologies
 
-- **Backend Framework:** LoopBack 4
+- **Back end Framework:** LoopBack 4
 - **Database:** PostgresSQL
 - **Authentication:** JWT (JSON Web Tokens)
 - **Testing:** Mocha
-
-## How It Works
-
-- Users interact with the API through various endpoints.
-- Each request is processed by the controllers, which interact with the database models.
-- Responses are sent back as JSON objects.
 
 ## Usage
 
@@ -80,3 +74,7 @@ Coverage report
 ```sh
 npm run test:coverage
 ```
+
+## Postman Collection
+
+https://api.postman.com/collections/16077961-e02237b5-d869-483b-80f7-53a750e622b2?access_key=PMAT-01HMEDQY3Z8XQ4A9WPYBKE49ZN
