@@ -2,7 +2,11 @@ import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
 import {Reservation} from './reservation.model';
 import {UserCredentials} from './user-credentials.model';
 
-@model({settings: {strict: false}})
+@model({
+  settings: {
+    postgresql: {schema: 'public', table: 'user'},
+  },
+})
 export class User extends Entity {
   @property({
     type: 'string',

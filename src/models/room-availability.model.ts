@@ -2,7 +2,11 @@ import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Room} from './room.model';
 import {Reservation} from './reservation.model';
 
-@model()
+@model({
+  settings: {
+    postgresql: {schema: 'public', table: 'roomavailability'},
+  },
+})
 export class RoomAvailability extends Entity {
   @property({
     type: 'string',

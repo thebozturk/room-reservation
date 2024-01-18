@@ -75,6 +75,18 @@ Coverage report
 npm run test:coverage
 ```
 
+### Migration
+
+Create tables for the models in the database
+
+```sh
+npm run build
+```
+
+```sh
+npm run migrate
+```
+
 ## Postman Collection
 
 https://api.postman.com/collections/16077961-e02237b5-d869-483b-80f7-53a750e622b2?access_key=PMAT-01HMEDQY3Z8XQ4A9WPYBKE49ZN

@@ -1,23 +1,19 @@
 import {UserController} from '../../controllers';
 import {
-  MyUserService, UserCredentialsRepository,
+  MyUserService,
   UserRepository,
 } from '@loopback/authentication-jwt';
 import {TokenService} from '@loopback/authentication';
 import {expect} from '@loopback/testlab';
 import sinon, {SinonStub} from 'sinon';
 import {User} from '../../models';
-import {NewUserRequest} from '../../constants/credential-request-body';
 import {UserProfile} from '@loopback/security';
-import exp from 'node:constants';
-import {UserCredentials} from '../../models/user-credentials.model';
 
 describe('UserController', () => {
   let userController: UserController;
   let userRepositoryStub: sinon.SinonStubbedInstance<UserRepository>;
   let userServiceStub: sinon.SinonStubbedInstance<MyUserService>;
   let tokenServiceStub: Partial<TokenService>;
-  let userCredentialsRepositoryStub = sinon.createStubInstance(UserCredentialsRepository);
 
   beforeEach(() => {
     userRepositoryStub = sinon.createStubInstance(UserRepository);
@@ -25,7 +21,6 @@ describe('UserController', () => {
     tokenServiceStub = {
       generateToken: sinon.stub().resolves('mockToken'),
     } as Partial<TokenService> & {generateToken: SinonStub};
-    userCredentialsRepositoryStub = sinon.createStubInstance(UserCredentialsRepository);
 
     userController = new UserController(
       tokenServiceStub as unknown as TokenService,
