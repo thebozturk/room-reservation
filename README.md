@@ -1,73 +1,82 @@
-# room-reservation
+# Room Reservation
 
-This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
-[initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
+## Scope
 
-## Install dependencies
+This project is a RESTful API that allows users to manage room reservations. Users can view available rooms, make reservations, cancel reservations, and retrieve details of their reservations.
 
-By default, dependencies were installed when this application was generated.
-Whenever dependencies in `package.json` are changed, run the following command:
+## Features
+
+### Room Management
+- **Create Room:** Admins can create new rooms with details like room number, type, and capacity.
+- **Update Room:** Modify the details of existing rooms.
+- **Delete Room:** Remove rooms from the system.
+- **Set Availability:** Admins can update the availability status of rooms, making them available or unavailable as needed.
+
+### Reservation Functionality
+- **Create Reservation:** Users can reserve available rooms for specified dates.
+- **Cancel Reservation:** Users can cancel their existing reservations.
+
+### User Management
+- **User Registration:** Users can register by creating a new user account.
+- **User Login:** Users can log in to the system, which is essential for actions like making reservations.
+
+### Pricing Strategies
+- The system includes dynamic pricing strategies based on various factors:
+    - **Date-Based Pricing:** Different prices for weekdays and weekends.
+    - **Occupancy-Based Pricing:** Prices can vary based on the number of guests, with additional charges for extra guests beyond the room’s capacity.
+    - These pricing strategies ensure flexible and optimized pricing for both users and the hotel management.
+
+
+## Technologies
+
+- **Backend Framework:** LoopBack 4
+- **Database:** PostgresSQL
+- **Authentication:** JWT (JSON Web Tokens)
+- **Testing:** Mocha
+
+## How It Works
+
+- Users interact with the API through various endpoints.
+- Each request is processed by the controllers, which interact with the database models.
+- Responses are sent back as JSON objects.
+
+## Usage
+
+### Installation
+
+Clone the repository
+
+```sh
+git clone https://github.com/thebozturk/room-reservation.git
+```
+
+Go to the project directory
+
+```sh
+cd room-reservation
+```
+
+Install dependencies
 
 ```sh
 npm install
 ```
-
-To only install resolved dependencies in `package-lock.json`:
-
-```sh
-npm ci
-```
-
-## Run the application
+Run the application
 
 ```sh
 npm start
 ```
 
-You can also run `node .` to skip the build step.
+### Testing
 
-Open http://127.0.0.1:3000 in your browser.
-
-## Rebuild the project
-
-To incrementally build the project:
+Run unit tests
 
 ```sh
-npm run build
+npm run test
 ```
 
-To force a full build by cleaning up cached artifacts:
+Coverage report
 
 ```sh
-npm run rebuild
+npm run test:coverage
 ```
-
-## Fix code style and formatting issues
-
-```sh
-npm run lint
-```
-
-To automatically fix such issues:
-
-```sh
-npm run lint:fix
-```
-
-## Other useful commands
-
-- `npm run migrate`: Migrate database schemas for models
-- `npm run openapi-spec`: Generate OpenAPI spec into a file
-
-## Tests
-
-```sh
-npm test
-```
-
-## What's next
-
-Please check out [LoopBack 4 documentation](https://loopback.io/doc/en/lb4/) to
-understand how you can continue to add features to this application.
-
-[![LoopBack](https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
