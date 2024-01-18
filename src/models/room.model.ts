@@ -1,6 +1,5 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Reservation} from './reservation.model';
-import {RoomStatus} from '../constants/room-status.constant';
 
 @model()
 export class Room extends Entity {

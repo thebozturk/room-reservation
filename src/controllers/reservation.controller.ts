@@ -85,6 +85,7 @@ export class ReservationController {
     return this.reservationRepository.findById(id);
   }
 
+  @authenticate('jwt')
   @del('/reservations/{id}/cancel')
   @response(204, {
     description: 'Reservation DELETE success',

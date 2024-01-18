@@ -1,31 +1,24 @@
 import {
-  Count,
-  CountSchema,
   Filter,
   repository,
-  Where,
 } from '@loopback/repository';
 import {
-  del,
   get,
   getModelSchemaRef,
-  getWhereSchemaFor,
   param,
-  patch,
-  post,
-  requestBody,
 } from '@loopback/rest';
 import {
-  User,
   Reservation,
 } from '../models';
 import {LocalUserRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
 export class UserReservationController {
   constructor(
     @repository(LocalUserRepository) protected userRepository: LocalUserRepository,
   ) { }
 
+  @authenticate('jwt')
   @get('/users/{id}/reservations', {
     responses: {
       '200': {

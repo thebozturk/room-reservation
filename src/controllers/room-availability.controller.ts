@@ -5,7 +5,7 @@ import {
   post,
   getModelSchemaRef,
   requestBody,
-  response,
+  response, del, param,
 } from '@loopback/rest';
 import {RoomAvailability} from '../models';
 import {RoomAvailabilityRepository} from '../repositories';
@@ -35,5 +35,13 @@ export class RoomAvailabilityController {
     roomAvailability: Omit<RoomAvailability, 'id'>,
   ): Promise<RoomAvailability> {
     return this.roomAvailabilityRepository.create(roomAvailability);
+  }
+
+  @del('/room-availabilities/{id}')
+  @response(204, {
+    description: 'RoomAvailability DELETE success',
+  })
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
+    await this.roomAvailabilityRepository.deleteById(id);
   }
 }

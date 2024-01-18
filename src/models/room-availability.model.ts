@@ -1,7 +1,6 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Room} from './room.model';
 import {Reservation} from './reservation.model';
-import {v4 as uuidv4} from 'uuid';
 
 @model()
 export class RoomAvailability extends Entity {
@@ -9,8 +8,7 @@ export class RoomAvailability extends Entity {
     type: 'string',
     id: true,
     generated: false,
-    default: () => uuidv4(),
-    useDefaultIdType: false,
+    defaultFn: 'uuidv4',
   })
   id: string;
 

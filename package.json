@@ -23,6 +23,7 @@
     "eslint:fix": "npm run eslint -- --fix",
     "pretest": "npm run rebuild",
     "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test:coverage": "lb-nyc --reporter=lcov npm run test",
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "premigrate": "npm run build",
@@ -55,6 +56,7 @@
     "@loopback/rest": "^13.1.5",
     "@loopback/rest-explorer": "^6.1.5",
     "@loopback/service-proxy": "^6.1.5",
+    "dayjs": "^1.11.10",
     "loopback-connector-postgresql": "^5.5.2",
     "tslib": "^2.0.0",
     "uuid": "^9.0.1"
@@ -66,6 +68,7 @@
     "@types/node": "^16.18.70",
     "@types/uuid": "^9.0.7",
     "eslint": "^8.51.0",
+    "mocha": "^10.2.0",
     "source-map-support": "^0.5.21",
     "typescript": "~5.2.2"
   }

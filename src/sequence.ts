@@ -34,7 +34,7 @@ export class MySequence implements SequenceHandler {
 
       this.send(response, result);
     } catch (error) {
-      const {request, response} = context;
+      const {response} = context;
 
       let message = DEFAULT_ERROR_MESSAGE;
       let statusCode = 500;

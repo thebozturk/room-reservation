@@ -1,9 +1,8 @@
 import {AuthenticationComponent} from '@loopback/authentication';
 import {
   JWTAuthenticationComponent,
-  JWTService,
   MyUserService,
-  TokenServiceBindings, UserCredentialsRepository, UserRepository, UserServiceBindings,
+ UserCredentialsRepository, UserRepository, UserServiceBindings,
 } from '@loopback/authentication-jwt';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
