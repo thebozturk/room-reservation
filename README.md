@@ -32,7 +32,6 @@ This project is a RESTful API that allows users to manage room reservations. Use
 - **Back end Framework:** LoopBack 4
 - **Database:** PostgresSQL
 - **Authentication:** JWT (JSON Web Tokens)
-- **Testing:** Mocha
 
 ## Usage
 
